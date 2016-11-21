@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='MsgApp'>
   <head>
     <meta charset="utf-8">
-    <title>hello test</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body {font-size: 1.2em;}</style>
+
+    <title>Expressions and Interpolations</title>
   </head>
   <body>
-    <script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.1'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-<h1>hello coursera devroy. I am thrilled about this course !</h1>
-<h2>Wow this really works !!!</h2>
+    <h1> Expressions and Interpolations </h1>
+    <div ng-controller='MsgController'>
+      {{name}} has a message for you: <br>
+
+      {{sayMessage()}}
+      <div>
+        <button ng-click="hungry()">{{stateOfBeing}}</button>
+        <br>
+        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
+
+      </div>
+
+
+    </div>
+
 
   </body>
 </html>
