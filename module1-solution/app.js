@@ -13,13 +13,16 @@ $scope.checkLunch = function () {
 
   if ($scope.name =="") {
     $scope.messageDisplay='Please enter data first';
+    $scope.color = "red";
 
   }
   else if (totalNameValue >3) {
     $scope.messageDisplay='Too Much!';
+    $scope.color = "green";
 
   } else {
     $scope.messageDisplay='Enjoy!';
+    $scope.color = "green";
 
   }
 
