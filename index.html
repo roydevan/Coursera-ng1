@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html ng-app='MsgApp'>
+<html ng-app='ShoppingListApp'>
   <head>
     <meta charset="utf-8">
-    <script src="angular.min.js"></script>
-    <script src="app.js"></script>
-    <style> body {font-size: 1.2em;}</style>
-
-    <title>Expressions and Interpolations</title>
+    <script src="angular.min.js" ></script>
+    <script src = "app.js" ></script>
+    <title>Custom Service</title>
   </head>
   <body>
-    <h1> Expressions and Interpolations </h1>
-    <div ng-controller='MsgController'>
-      {{name}} has a message for you: <br>
+    <h1>Custom Service </h1>
+    <div ng-controller='ShoppingListAddController as itemAdder'>
+      <input type="text" ng-model="itemAdder.itemName" placeholder="Item Name">
+      <input type="text" ng-model="itemAdder.itemQuantity" placeholder="quantity">
+      <button ng-click="itemAdder.addItem();">Add Item to Shopping List</button>
+    </div>
 
-      {{sayMessage()}}
-      <div>
-        <button ng-click="hungry()">{{stateOfBeing}}</button>
-        <br>
-        <img ng-src="images/yaakov_{{stateOfBeing}}.png">
-
-      </div>
-
-
+    <div ng-controller ='ShoppingListShowController as showList'>
+      <ol>
+        <li ng-repeat="item in showList.items">
+          {{ item.quantity }} of {{item.name}}
+          <button ng-click="showList.removeItem($index);">Remove Item</button>
+        </li>
+      </ol>
     </div>
 
 

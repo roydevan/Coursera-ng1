@@ -1,22 +1,49 @@
 (function (){
 'use strict';
-angular.module('MsgApp',[])
-.controller('MsgController', MsgController);
 
-MsgController.$inject=['$scope'];
-function MsgController ($scope){
-$scope.name="Devanjan";
-$scope.stateOfBeing='hungry';
-$scope.buttonName='Feed Me';
+angular.module ('ShoppingListApp',[])
+.controller('ShoppingListAddController',ShoppingListAddController)
+.controller('ShoppingListShowController',ShoppingListShowController)
+.service('ShoppingListService',ShoppingListService);
 
-$scope.sayMessage = function (){
-  return "Dev likes to eat healthy";
-};
+ShoppingListAddController.$inject=['ShoppingListService'];
+function ShoppingListAddController(ShoppingListService){
+  var itemAdder=this;
 
-$scope.hungry = function (){
-  $scope.stateOfBeing='fed';
-  $scope.buttonName='Go Back';
+  itemAdder.itemName="";
+  itemAdder.itemQuantity="";
+
+  itemAdder.addItem = function (){
+    ShoppingListService.addItem(itemAdder.itemName,itemAdder.itemQuantity);
+  }
 }
+
+ShoppingListShowController.$inject = ['ShoppingListService'];
+function ShoppingListShowController(ShoppingListService){
+  var showList = this;
+  showList.items=ShoppingListService.getItems();
+  showList.removeItem=function (itemIndex){
+    ShoppingListService.removeItem(itemIndex);
+  }
+}
+
+function ShoppingListService () {
+  var service=this;
+  var items=[];
+
+  service.addItem = function (itemName,quantity){
+    var item={
+      name: itemName,
+      quantity: quantity
+    };
+    items.push(item);
+  };
+  service.getItems = function(){
+    return items;
+  };
+  service.removeItem = function(itemIndex){
+    items.splice(itemIndex,1);
+  };
 }
 
 })();
