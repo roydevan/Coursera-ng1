@@ -58,9 +58,10 @@ function ShoppingListCheckOffService (){
       name: itemName,
       quantity: quantity
     };
-    boughtItems.push(boughtItem);
+    //boughtItems.push(boughtItem);
+    boughtItems.push(shoppingList[itemIndex]);
+
     shoppingList.splice(itemIndex,1);
-    console.log(boughtItems.length);
   };
 
   service.getBoughtItems = function(){
