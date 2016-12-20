@@ -26,7 +26,7 @@ function FoundItemsDirective() {
 
   function FoundItemsDirectiveController() {
     var menu = this;
-    console.log(menu.searchTerm)
+    //console.log(menu.searchTerm)
     return true;
 
   }
