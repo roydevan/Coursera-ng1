@@ -26,9 +26,7 @@ function FoundItemsDirective() {
 
   function FoundItemsDirectiveController() {
     var menu = this;
-    //console.log(menu.searchTerm)
     return true;
-
   }
 
 NarrowItDownController.$inject = ['MenuSearchService'];
@@ -53,8 +51,6 @@ function NarrowItDownController(MenuSearchService) {
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath) {
   var service = this;
-
-
 
   service.getMatchedMenuItems = function (searchTerm) {
 
